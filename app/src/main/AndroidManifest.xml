@@ -11,13 +11,6 @@
         android:roundIcon="@mipmap/ic_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FirebaseLogin">
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@android:drawable/ic_popup_sync" />
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/firebase" />
-
         <activity
             android:name=".DashboardActivity"
             android:exported="true" />
@@ -38,6 +31,17 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+<!--        Theming in the Firebase Notification-->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@android:drawable/ic_popup_sync" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/firebase" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/chennelId" />
 
     </application>
 

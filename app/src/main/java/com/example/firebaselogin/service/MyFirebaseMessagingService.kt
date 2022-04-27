@@ -20,10 +20,18 @@ import com.google.firebase.messaging.RemoteMessage
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
 
+    /*
+    * This is called when the app is uninstall
+    * and re-install the app
+    * */
     override fun onNewToken(token: String) {
-
+        Log.d(TAG, "onNewToken: $token")
     }
 
+    /*
+    * This is where we need to handle the message
+    *  for the Push Notification
+    * */
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
 
@@ -38,7 +46,14 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 remoteMessage.notification?.body
             )
         }
+    }
 
+    /*
+    * This is called when the you want to delete
+    * message on push notification
+    * */
+    override fun onDeletedMessages() {
+        super.onDeletedMessages()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -74,11 +89,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         notificationManager: NotificationManager
     ) {
         val channel =
-            NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_LOW)
+            NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
         channel.enableLights(true)
         channel.enableVibration(false)
         channel.lightColor = Color.GREEN
-
         notificationManager.createNotificationChannel(channel)
 
     }
