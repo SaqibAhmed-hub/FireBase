@@ -39,14 +39,16 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val passwordTextView: EditText = view.findViewById(R.id.password_ed)
 
         login_btn.setOnClickListener {
-            if (userEmailTextView.text.isNotEmpty()) {
-                callAuthentication(
-                    userEmailTextView.text.toString(),
-                    passwordTextView.text.toString()
-                )
-            } else {
-                Toast.makeText(requireActivity(), "Null value", Toast.LENGTH_SHORT).show()
-            }
+
+            throw RuntimeException("Test Crash")
+//            if (userEmailTextView.text.isNotEmpty()) {
+//                callAuthentication(
+//                    userEmailTextView.text.toString(),
+//                    passwordTextView.text.toString()
+//                )
+//            } else {
+//                Toast.makeText(requireActivity(), "Null value", Toast.LENGTH_SHORT).show()
+//            }
         }
         forget_password_tv.setOnClickListener {
             navController.navigate(R.id.action_loginFragment_to_forgetPassword)
